@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
 
+
 class App extends Component {
     constructor() {
       super();
@@ -59,11 +60,13 @@ class App extends Component {
   render() {
 
     const style = {
-      backgroundColor: 'white',
+      backgroundColor: 'green',
+      color: 'white',
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
       cursor: 'pointer'
+      
     }
 
     let persons = null;
@@ -88,21 +91,37 @@ class App extends Component {
 
       </div>
       );
+      style.backgroundColor = "red";
+      
     }
-    console.log(Component);
+
+    //let classes = ['red', 'bold'].join(' ');
+
+    let classes = [];
+    if(this.state.persons.length <= 2) {
+      classes.push('red');
+    }
+    if(this.state.persons.length <= 1) {
+      classes.push('bold');
+    }
+
+
+    /* console.log(Component);
     console.log(this.props);
-    console.log(this.context);
+    console.log(this.context); */
     return (
+      
       <div className="App">
         <h1>Hi, I'm a react app!</h1>
-        <p> this reall works</p>
+        <p className={classes.join(' ')}> this reall works</p>
         <button 
           style={style}
-          onClick={this.togglePersonsHandler}>switch name</button>
+          onClick={this.togglePersonsHandler}>show name</button>
         
           {persons}
 
       </div>
+      
     );
   }
 }
